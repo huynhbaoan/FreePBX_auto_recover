@@ -19,7 +19,7 @@ if [[ "$total_fd_leaked" -gt 1000 ]]
 then
         echo "WARNING: Total LEAKED file descriptors are more than 1000."
         echo "Restart Asterisk core to release leaked connections."
-        #source /root/GAM_automation/core_restart.sh
+        source core_restart.sh
 fi
 
 total_fd_est=`/usr/sbin/lsof -u asterisk|grep EST|wc -l|awk '{print $1}'`
@@ -42,5 +42,5 @@ then
 	echo "No HTTP seesion warning from log."
 else
 	echo $log_warn
-        #source /root/GAM_automation/emergency_restart.sh
+        source emergency_restart.sh
 fi
